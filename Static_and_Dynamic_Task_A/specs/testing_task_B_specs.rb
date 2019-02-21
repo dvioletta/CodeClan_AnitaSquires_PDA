@@ -11,30 +11,30 @@ class CardGameTest < MiniTest::Test
       @card2 = Card.new("hearts", 9)
       @card3 = Card.new("ace_space", 1)
       #create an array with the two cards inside
-      # game = [@card1, @card2]
+      @game = [@card1, @card2, @card3]
       @cardgame1 = CardGame.new([@card1, @card2])
     end
 
       def test_checkforAce()
-        assert_equal(1, @card3.value)
+        result = CardGame.checkforAce(@card2)
+        assert_equal(false, result)
       end
 
-
-
-    def test_highest_card() #card can be replaced by number
-      #make a test that returns the highest number value in a two comparison set.
-      #so if card1 is more than card2 on first loop return card1
-      #however if card2 is more than card1 end loop return card2
-      #may need two tests for this
-      assert_equal(true, @cardgame1(card1.value))
-
+    def test_highest_card__card2() #card can be replaced by number
+      result = CardGame.highest_card(@card1, @card2)
+      assert_equal(result, @card2.suit)
       end
 
-    #def test_CardGame_card_total()
-      #make sure that the array is all added together.
-      #This requires a class method to work correctly
-      #may also need to include the total method as part of the formual
-      #assert_equal(@cardgame1.total)
-      #end
+    def test_highest_card__card1()
+        result = CardGame.highest_card(@card1, @card3)
+        assert_equal(result, @card1.suit)
+        end
+
+
+    def test_CardGame_card_total()
+      result = CardGame.cards_total(@game)
+      expected = "You have a total of 17"
+      assert_equal(expected, result)
+      end
 
 end
