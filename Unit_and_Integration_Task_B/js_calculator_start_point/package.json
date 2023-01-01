@@ -20,6 +20,6 @@
     "protractor": "^5.4.0",
     "server": "^1.0.18",
     "webdriver-manager": "^10.2.7",
-    "webpack": "^4.29.6"
+    "webpack": "^5.75.0"
   }
 }
